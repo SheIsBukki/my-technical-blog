@@ -4,13 +4,19 @@ import slugify from "slugify";
 
 export const prerender = true;
 const blogs = await getCollection("blog");
-const pages = Object.fromEntries(
-  blogs.map(({ id, data }) => [
+const projects = await getCollection("portfolio");
+const pages = Object.fromEntries([
+  ...blogs.map(({ id, data }) => [
     id,
     // encodeURIComponent(slugify(data.title).toLowerCase()),
     { data, slug: encodeURIComponent(slugify(data.title).toLowerCase()) },
   ]),
-);
+  ...projects.map(({ id, data }) => [
+    id,
+    // encodeURIComponent(slugify(data.title).toLowerCase()),
+    { data, slug: encodeURIComponent(slugify(data.title).toLowerCase()) },
+  ]),
+]);
 
 export const { getStaticPaths, GET } = OGImageRoute({
   param: "route",

@@ -1,0 +1,39 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, render } from "astro:content";
+import slugify from "slugify";
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+
+export const getStaticPaths = (async () => {
+  const projects = await getCollection("portfolio");
+  return projects.map((project) => ({
+    params: {
+      slug: slugify(project.data.title.toLowerCase()),
+      id: project.id,
+    },
+    props: { project },
+  }));
+}) satisfies GetStaticPaths;
+
+const { project } = Astro.props;
+
+const { Content } = await render(project);
+
+const baseUrl = "https://bukola.pages.dev";
+
+const { title: pageTitle, description } = project.data;
+
+const ogImage = new URL(`/open-graph/${project.id}.png`, baseUrl).toString();
+---
+
+<ProjectLayout
+  {...project.data}
+  baseUrl={baseUrl}
+  ogImage={ogImage}
+  pageTitle={pageTitle}
+  description={description}
+  body={project.body}
+>
+  <Content />
+</ProjectLayout>
+<style></style>

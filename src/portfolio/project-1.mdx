@@ -1,0 +1,75 @@
+---
+title: "Charbage"
+pubDate: 2026-09-20
+description: "A Markdown blogging platform"
+featuredImage:
+  url: "../assets/charbage/charbage_home.png"
+  alt: "Charbage home page"
+liveUrl: "https://charbage.netlify.app"
+sourceCode: "https://github.com/SheIsBukki/charbage"
+stack: ["Next.Js", "TypeScript", "TailwindCSS", "NeonDB", "PostgreSQL", "Drizzle ORM", "Cloudinary"]
+---
+
+[//]: # (if I want to add more images: uncomment the commented block below)
+[//]: # (images:)
+
+[//]: # (  - url:)
+
+[//]: # (    alt:)
+
+[//]: # (  - url:)
+
+[//]: # (    alt:)
+
+## Overview
+Charbage is a full-stack Markdown blogging platform built with TypeScript and Next.js, designed to help users publish technical content with a seamless writing experience. It features a responsive Markdown editor with live preview and syntax highlighting for embedded code blocks. Its responsive UI along with social features like comments, likes, and bookmarks provide holistic user experience across desktop, tablet, and mobile.
+
+## 👩🏾‍💻 Role
+Fullstack Development and UI/UX Design
+
+## 🔑 Key Features
+* Markdown editor - write/edit posts with live preview, syntax highlighting
+* Authentication - secure sign-up/login with session-based auth
+* Social interaction - comment, like, and bookmark posts
+* Database - persistent storage for posts, users, and interactions
+* Responsive UI - clean, mobile-friendly design with light/dark mode
+
+## 🛠️ Tech Stack
+* Language: TypeScript
+* Frontend: Next.js, TailwindCSS, shadcn/ui, Radix UI
+* Backend: Next.js (API routes), RESTful API
+* Authentication: Email/Password + OAuth (GitHub, Google) via Oslo.js, Arctic, bcrypt
+* Database: PostgreSQL (NeonDB), Drizzle ORM
+* Editor: react-md-editor, react-markdown, highlight.js
+* Media storage: Cloudinary
+* HTTP: Fetch API
+* Hosting: Netlify
+* Other: Zod, React Hook Form, next-share, dayjs, Excalidraw
+
+## 🎯 Goal
+I wanted to build a Markdown blog app to explore writing a full-stack application with an editor, authentication, and social features.
+
+## 📌 Approach
+
+### Why Next.js?
+As a frontend developer, I wanted to build a full-stack application without switching to an entirely new ecosystem. Next.js let me stay within React, which I was already comfortable with (alongside Vue/Nuxt), while adding backend capability through API routes. It also has a large community and extensive public documentation, which made it easier to learn full-stack patterns as I went which is important since backend development itself was new territory for me on this project.
+
+### Why Drizzle over another ORM (e.g., Prisma)?
+Drizzle's syntax stays close to raw PostgreSQL, which appealed to me over more abstracted ORMs. I wanted something closer to how the database actually works rather than an abstraction layer that hides it. In a few places in the `db` directory, I write raw SQL directly rather than relying purely on the ORM's query builder.
+
+### Why custom auth (Oslo.js/Arctic) instead of something like NextAuth?
+I chose to implement authentication from scratch using Oslo.js and Arctic rather than relying on a library like NextAuth, building on a foundation I'd developed in an earlier project. This gave me a deeper, hands-on understanding of how session-based auth and OAuth flows actually work under the hood rather than depending on an abstraction. The GitHub and Google OAuth integrations are a result of that approach. I will continue to refine the auth implementation as I learn more about session security best practices.
+
+### Why shadcn/ui + Radix instead of a full component library?
+I wanted full control over styling rather than fighting a pre-styled component library. Tailwind CSS combined with shadcn/ui and Radix gave me accessible, unstyled primitives I could customize fully to match the design I wanted.
+
+### Design/UX decisions
+As a developer, embedded code blocks in posts were a non-negotiable feature. For theming, I implemented system/light/dark rather than just light/dark. My own workflow uses automatic mode (light during the day, dark at night) to keep the screen easy on the eyes, and a fixed light/dark toggle wouldn't account for switching contexts throughout the day. I consider adaptive theming a baseline feature every app should have.
+
+## 🦾 Challenges & Solutions
+**Database provider limitations**: Initially used Supabase for the PostgreSQL database, but ran into its inactivity policy—projects get paused if not actively used within roughly a 3-month window. Switched to NeonDB to avoid the risk of the database being paused unexpectedly.
+
+**Backend learning curve as a frontend developer**: Coming from a frontend-focused background, figuring out backend logic: API routes, data modeling, request handling, was the biggest hurdle. Working through it meant learning how to use an ORM (Drizzle), write and structure PostgreSQL schemas, and build backend-like logic within Next.js's API routes.
+
+## ✨ Final Thoughts
+Building Charbage deepened my understanding of backend development, ORMs, and PostgreSQL which are skills I hadn't worked with much as a frontend developer.

@@ -1,0 +1,72 @@
+---
+import { Image } from "astro:assets";
+
+import BaseLayout from "./BaseLayout.astro";
+import ProjectSlot from "../components/ProjectSlot.astro";
+import { Icon } from "astro-icon/components";
+
+const {
+  baseUrl,
+  ogImage,
+  title,
+  description,
+  featuredImage,
+  liveUrl,
+  sourceCode,
+} = Astro.props;
+---
+
+<BaseLayout
+  description={description ? description.slice(0, 160) : title}
+  ogImage={ogImage}
+  ogType="project"
+  baseUrl={baseUrl}
+  pageTitle={title}
+  className="container mx-auto w-11/12 md:w-10/12"
+>
+  <article class="mx-auto space-y-4 md:max-w-4/5">
+    <h1 class="block text-center font-[Syne] text-3xl font-bold md:text-4xl">
+      {title}
+    </h1>
+
+    <figure class="">
+      <Image
+        class="rounded-2xl"
+        src={featuredImage.url}
+        alt={featuredImage.alt}
+      />
+    </figure>
+
+    <div class="flex items-center justify-center gap-4">
+      <a
+        target="_blank"
+        href={liveUrl}
+        class="flex cursor-pointer items-center align-middle text-sm md:mx-0"
+      >
+        <span> Live URL </span>
+        <Icon
+          class="opacity-60 dark:opacity-100"
+          size="16"
+          name="tabler:arrow-up-right"
+        />
+      </a>
+
+      <a
+        target="_blank"
+        href={sourceCode}
+        class="flex cursor-pointer items-center align-middle text-sm md:mx-0"
+      >
+        <span> Source code </span>
+        <Icon
+          class="opacity-60 dark:opacity-100"
+          size="16"
+          name="tabler:arrow-up-right"
+        /></a
+      >
+    </div>
+
+    <ProjectSlot>
+      <slot />
+    </ProjectSlot>
+  </article>
+</BaseLayout>

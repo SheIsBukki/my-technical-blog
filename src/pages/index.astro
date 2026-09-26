@@ -7,6 +7,7 @@ import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogCard from "../components/BlogCard.astro";
 import Hero from "../components/Hero.astro";
+import AllProjects from "../components/AllProjects.astro";
 
 const pageTitle = "Home";
 const pageDescription =
@@ -37,6 +38,23 @@ const latestPosts = allPosts
 >
   <Hero />
 
+  <!--Projects-->
+  <div class="mt-24 md:px-12">
+    <h3 class="mb-8 text-xl font-black italic">Projects</h3>
+    <AllProjects arrayLength={2} />
+    <a
+      class="relative mx-auto flex w-fit cursor-pointer items-center gap-2 pb-4 text-sm after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-in-out after:content-[''] hover:after:scale-x-100 motion-reduce:transition-none motion-reduce:hover:transform-none md:mx-0 md:text-base"
+      href="/projects"
+      ><span>See all projects</span>
+      <Icon
+        class="opacity-60 dark:opacity-100"
+        size="16"
+        name="tabler:arrow-right"
+      /></a
+    >
+  </div>
+
+  <!--Posts-->
   <div class="mt-24 md:px-12">
     <h3 class="mb-8 text-xl font-black italic">Recent Posts</h3>
     {
@@ -51,7 +69,6 @@ const latestPosts = allPosts
         />
       ))
     }
-
     <a
       class="relative mx-auto flex w-fit cursor-pointer items-center gap-2 pb-4 text-sm after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-in-out after:content-[''] hover:after:scale-x-100 motion-reduce:transition-none motion-reduce:hover:transform-none md:mx-0 md:text-base"
       href="/posts"

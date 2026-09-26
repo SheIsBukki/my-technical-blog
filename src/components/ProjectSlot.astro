@@ -1,0 +1,227 @@
+---
+
+---
+
+<script>
+  function initialiseProjectSlot() {
+    const projectSlot = document.querySelector<HTMLElement>(".project-slot")!;
+
+    // INLINE CODE
+    const slotInlineCode = [...projectSlot.querySelectorAll("code")];
+    slotInlineCode.map((code) => {
+      if (code.parentElement?.tagName !== "PRE") {
+        code.classList.add("inline-code");
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", initialiseProjectSlot);
+</script>
+
+<article class="project-slot text-pretty text-gray-900 dark:text-gray-100">
+  <slot />
+</article>
+
+<style is:global>
+  /*ANCHOR TAG STYLING*/
+  .project-slot a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: #9775fa80;
+    text-decoration-thickness: 3px;
+
+    &:hover {
+      text-decoration-color: #9775fa;
+      opacity: 1;
+    }
+  }
+
+  .project-slot h2 > a,
+  .project-slot h3 > a,
+  .project-slot h4 > a,
+  .project-slot h5 > a,
+  .project-slot h6 > a {
+    text-decoration-color: unset;
+    text-decoration: none;
+    position: relative;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-style: wavy;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 0.5px;
+      text-decoration-color: unset;
+
+      &::after {
+        content: url("/src/assets/MdiLinkVariant.svg");
+        margin-inline-start: 4px;
+        position: absolute;
+        transition: 0.2s ease-in-out;
+      }
+    }
+  }
+
+  a.external-link {
+    position: relative;
+    &:hover {
+      &::after {
+        position: absolute;
+        content: url("/src/assets/TablerArrowUpRight.svg");
+        bottom: 0.36em;
+        right: -0.32em;
+      }
+    }
+  }
+
+  @media (width<330px) {
+    a.external-link {
+      position: static;
+      &:hover {
+        &::after {
+          position: static;
+          content: none;
+        }
+      }
+    }
+  }
+
+  /*HEADING H1 STYLING*/
+  .project-slot h1 {
+    display: block;
+    font-family: "Syne";
+    border: 1px solid red;
+    font-size: 1.875rem;
+    line-height: calc(2.25 / 1.875);
+    font-weight: bold;
+  }
+
+  @media (width>=48rem) {
+    .project-slot h1 {
+      font-size: 2.25rem;
+      line-height: calc(2.5 / 2.25);
+      border: 1px saddlebrown solid;
+    }
+  }
+
+  /*HEADING (H2 - H6) STYLING*/
+  .project-slot h2,
+  .project-slot h3,
+  .project-slot h4,
+  .project-slot h5,
+  .project-slot h6 {
+    font-family: "Nunito_Sans";
+    font-weight: bold;
+  }
+
+  .project-slot h2:first-of-type {
+    margin-block: 0px 12px;
+  }
+
+  .project-slot h2:not(:first-of-type),
+  .project-slot h3 {
+    margin-block: 36px 12px !important;
+  }
+
+  .project-slot h4,
+  .project-slot h5,
+  .project-slot h6 {
+    margin-block: 12px 8px;
+  }
+
+  .project-slot h2 {
+    font-size: 24px;
+  }
+
+  .project-slot h3 {
+    font-size: 20px;
+  }
+
+  /*PARAGRAPH*/
+  .project-slot p:not(blockquote p) {
+    margin-block-end: 20px;
+  }
+
+  /*BLOCKQUOTE*/
+  .project-slot blockquote {
+    margin-block: 16px;
+    border-left-width: 6px;
+    padding-inline: 16px 8px;
+    opacity: 0.8;
+    box-shadow: 0 1px 2px 1px rgb(0, 0, 0, 0.1);
+  }
+
+  .project-slot blockquote p {
+    padding-block: 8px;
+  }
+
+  /*LIST STYLING*/
+  .project-slot ul,
+  .project-slot ol {
+    margin-block: 8px !important;
+    list-style-position: inside;
+  }
+
+  .project-slot ul {
+    list-style-type: square;
+  }
+
+  .project-slot ol {
+    list-style-type: decimal;
+  }
+
+  .project-slot ol ul,
+  .project-slot ul ul,
+  .project-slot ol ol,
+  .project-slot ul ol {
+    margin-block: 0.1em !important;
+    margin-inline-start: 1em !important;
+  }
+
+  .project-slot ol ul,
+  .project-slot ul ul {
+    list-style-type: "- ";
+  }
+
+  .project-slot ol ol,
+  .project-slot ul ol {
+    list-style-type: lower-roman;
+  }
+
+  /*SLOT IMAGES AND CAPTION*/
+  .project-slot img {
+    margin-block: 16px;
+    border-radius: 4px;
+    background-color: transparent;
+    aspect-ratio: auto;
+    width: 100%;
+    box-shadow: 0px 0px 12px;
+    object-fit: contain;
+  }
+
+  .dark .project-slot img {
+    box-shadow: none;
+  }
+
+  .project-slot figcaption {
+    text-align: center;
+    margin-block-end: 24px;
+    font-size: 14px;
+  }
+
+  /*INLINE CODE STYLING*/
+  code.inline-code,
+  .dark code.inline-code {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .dark code.inline-code {
+    background-color: #374151;
+  }
+
+  code.inline-code {
+    background-color: #e5e7eb;
+  }
+</style>

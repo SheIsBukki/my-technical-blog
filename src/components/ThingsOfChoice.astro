@@ -20,12 +20,16 @@ const browsers = [
   { Safari: "daily driver" },
   { "Google chrome": "supporting browser" },
   { Orion: "second supporting browser" },
-  { "Opera mini": "mainly for movies and tv shows" },
+  {
+    "Brave browser":
+      "mainly for downloading/watching movies, tv shows, and tennis",
+  },
 ];
 
 const devices = ["M1 14” MacBook Pro 2021, 16GB RAM", "iPhone 13 Pro"];
 const shell = ["Zsh", "Ohmyzsh"];
 const noteTaking = ["Apple Note app", "Paper notebooks and black ink gel pens"];
+const aiTools = ["Claude AI"];
 ---
 
 <section class="things-of-choice space-y-4 text-pretty">
@@ -88,6 +92,13 @@ const noteTaking = ["Apple Note app", "Paper notebooks and black ink gel pens"];
     <p>Note taking</p>
     <ul>
       {noteTaking.map((item) => <li>{item}</li>)}
+    </ul>
+  </div>
+
+  <div class="">
+    <p>AI tools</p>
+    <ul>
+      {aiTools.map((item) => <li>{item}</li>)}
     </ul>
   </div>
 </section>

@@ -5,14 +5,6 @@ export const socialLinks = [
     ],
   },
   {
-    Bluesky: [
-      {
-        url: "https://bsky.app/profile/itsbukola.bsky.social",
-        icon: "tabler:brand-bluesky",
-      },
-    ],
-  },
-  {
     LinkedIn: [
       {
         url: "https://www.linkedin.com/in/bukola-ogunleye-j/",
