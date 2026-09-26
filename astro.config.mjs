@@ -5,6 +5,7 @@ import icon from "astro-icon";
 import pagefind from "astro-pagefind";
 import { remarkReadingTime } from "./remark-reading-time.mjs";
 import remarkToc from "remark-toc";
+import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,10 +14,11 @@ export default defineConfig({
   },
 
   integrations: [
+    mdx(),
     icon({
       include: { mdi: ["*"] },
-    }), // This should always be placed last integration so that all integrations run before it does
-    pagefind(),
+    }),
+    pagefind(), // This should always be placed last integration so that all integrations run before it does
   ],
   markdown: {
     remarkPlugins: [

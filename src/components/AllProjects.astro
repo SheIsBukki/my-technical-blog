@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import slugify from "slugify";
+import ProjectCard from "./ProjectCard.astro";
+
+const projects = await getCollection("portfolio");
+const { arrayLength } = Astro.props;
+---
+
+<!--WHEN I ADD MORE PROJECTS, I WILL PUT THIS IN A GRID-->
+<div class="grd grid-flow-row-dense gap-8 md:grid-cols-2">
+  {
+    projects
+      .slice(0, arrayLength)
+      .map((project) => (
+        <ProjectCard
+          title={project.data.title}
+          liveUrl={project.data.liveUrl}
+          sourceCode={project.data.sourceCode}
+          stack={project.data.stack}
+          featuredImage={project.data.featuredImage}
+          slug={`/projects/${slugify(project.data.title).toLowerCase()}`}
+        />
+      ))
+  }
+</div>

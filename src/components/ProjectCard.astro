@@ -1,0 +1,64 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+const { title, liveUrl, sourceCode, stack, featuredImage, slug } = Astro.props;
+---
+
+<div
+  class="group container mb-10 border-1 border-[#9775fa40] px-8 py-4 hover:border-[#9775fa] dark:border-[#9775fa80] dark:hover:border-[#9775fa]"
+>
+  <div class="maxw-2/3 boder mx-auto space-y-4">
+    <p class="font-[Syne] text-3xl font-bold md:text-4xl">
+      <a href={slug}>
+        {title}
+      </a>
+    </p>
+    <figure class="boder">
+      <Image src={featuredImage.url} alt={featuredImage.alt} />
+    </figure>
+    <ul class="stack boder flex flex-wrap gap-2">
+      {
+        stack.map((item: string) => (
+          <li class="bg-[#9775fa20] px-2 py-1 text-sm dark:bg-[#9775fa80]">
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+    <hr class="border-[#9775fa50] group-hover:border-[#9775fa]" />
+    <div
+      class="boder space-y-4 align-middle md:justify-between lg:flex lg:flex-row lg:space-y-0"
+    >
+      <p
+        class="relative flex w-fit cursor-pointer gap-2 pb-4 font-black after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-in-out after:content-[''] hover:after:scale-x-100 motion-reduce:transition-none motion-reduce:hover:transform-none md:mx-0"
+      >
+        <a href={slug}>Read more</a>
+      </p>
+      <div class="boder flex justify-between md:gap-4">
+        <a
+          href={liveUrl}
+          class="relative flex w-fit cursor-pointer items-center pb-4 align-middle text-sm after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-in-out after:content-[''] hover:after:scale-x-100 motion-reduce:transition-none motion-reduce:hover:transform-none md:mx-0"
+        >
+          <span> Live URL </span>
+          <Icon
+            class="opacity-60 dark:opacity-100"
+            size="16"
+            name="tabler:arrow-up-right"
+          />
+        </a>
+
+        <a
+          href={sourceCode}
+          class="relative flex w-fit cursor-pointer items-center pb-4 align-middle text-sm after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-in-out after:content-[''] hover:after:scale-x-100 motion-reduce:transition-none motion-reduce:hover:transform-none md:mx-0"
+        >
+          <span> Source code </span>
+          <Icon
+            class="opacity-60 dark:opacity-100"
+            size="16"
+            name="tabler:arrow-up-right"
+          /></a
+        >
+      </div>
+    </div>
+  </div>
+</div>

@@ -24,6 +24,10 @@ export const { getStaticPaths, GET } = OGImageRoute({
       description:
         "Here lies all the tags and categories of the blogposts written by Bukola Ogunleye.",
     },
+    projects: {
+      title: "Project Page | Bukola's Portfolio",
+      description: "Here are selected projects I built",
+    },
   },
 
   // For each page, this callback will be used to customize the OpenGraph image.

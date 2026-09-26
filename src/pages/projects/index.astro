@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AllProjects from "../../components/AllProjects.astro";
+
+const pageTitle = "Portfolio Page";
+const pageDescription = "Here are some of my projects";
+const pathname = "projects";
+---
+
+<!--WHEN I ADD MORE PROJECTS, I WILL REMOVE THE md width-->
+<BaseLayout
+  pageTitle={pageTitle}
+  description={pageDescription}
+  pathname={pathname}
+  className="container mx-auto w-11/12 md:w-10/12"
+>
+  <div class="boder border-red-500"></div>
+  <h1 class="mb-8 text-3xl font-black italic md:text-5xl">Selected Projects</h1>
+  <p>Some things I've built</p>
+  <div class="mt-16 md:px-12">
+    <AllProjects arrayLength={5} />
+  </div>
+</BaseLayout>
